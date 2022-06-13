@@ -2,11 +2,7 @@ import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { forkJoin } from 'rxjs';
 
-import {
-  concatMap,
-  map,
-  mergeMap,
-} from 'rxjs/operators';
+import { concatMap, map, mergeMap } from 'rxjs/operators';
 import { Album } from './album.model';
 import { AlbumService } from './album.service';
 import { Photo } from './photo.model';
@@ -60,7 +56,6 @@ export class AppComponent implements OnInit {
           return photosByAlbum;
         }),
         map((photosByAlbum) => {
-          // console.log(photosByAlbum);
           photosByAlbum.forEach((photoCollection: Photo[]) => {
             photoCollection.forEach((photo: Photo) => {
               const albumIndex = user.albums.findIndex((album) => {
