@@ -1,10 +1,11 @@
+import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: ` <h3>Start</h3> `,
+  template: ` <app-my-counter></app-my-counter> `,
   styles: [],
 })
-export class AppComponent {
-  title = 'a14_demos';
+export class AppComponent implements OnInit {
+  ngOnInit(): void {}
 }
