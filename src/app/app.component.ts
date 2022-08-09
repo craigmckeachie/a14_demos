@@ -2,9 +2,15 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: ` <h3>Start</h3> `,
+  template: `
+    <ul>
+      <li *ngFor="let fruit of fruits">
+        {{ fruit }}
+      </li>
+    </ul>
+  `,
   styles: [],
 })
 export class AppComponent {
-  title = 'a14_demos';
+  fruits = ['Kiwi', 'Apple', 'Strawberry', 'Mango'];
 }
