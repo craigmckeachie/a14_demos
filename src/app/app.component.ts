@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +17,22 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
         placeholder="username"
         name="username"
       />
+
+      <div
+        *ngIf="
+          signinForm.get('username').invalid &&
+          signinForm.get('username').touched &&
+          signinForm.get('username').dirty
+        "
+      >
+        <div *ngIf="signinForm.get('username').hasError('required')">
+          Username is required.
+        </div>
+        <div *ngIf="signinForm.get('username').hasError('minlength')">
+          Please make it longer.
+        </div>
+      </div>
+
       <input
         formControlName="password"
         type="password"
@@ -20,8 +41,10 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
       />
       <button>Sign In</button>
     </form>
-    <pre>
-      {{ signinForm.value | json }}
+    <pre *ngIf="signinForm.get('username').errors">
+      {{ signinForm.get('username').errors | json }}
+
+
     </pre
     >
   `,
@@ -34,13 +57,19 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.signinForm = this.fb.group({
-      username: [],
+      username: [null, [Validators.required, Validators.minLength(3)]],
       password: [],
     });
-    // this.signinForm = new FormGroup({
-    //   username: new FormControl(),
-    //   password: new FormControl(),
-    // });
+    // this.signinForm = new FormGroup(
+    //   {
+    //     username: new FormControl(null, [
+    //       Validators.required,
+    //       Validators.minLength(3),
+    //     ]),
+    //     password: new FormControl(),
+    //   },
+    //   { updateOn: 'blur' }
+    // );
   }
 
   onSubmit() {
