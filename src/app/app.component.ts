@@ -2,9 +2,19 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: ` <h3>Start</h3> `,
+  template: `
+    <a href="" (click)="onClick($event)">Click Me!</a>
+    <p>{{ message }}</p>
+  `,
   styles: [],
 })
 export class AppComponent {
-  title = 'a14_demos';
+  message = '';
+
+  onClick(event: Event) {
+    console.log(event);
+
+    event.preventDefault();
+    this.message = 'clicked';
+  }
 }
