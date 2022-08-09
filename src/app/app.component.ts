@@ -2,9 +2,16 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: ` <h3>Start</h3> `,
+  template: `
+    <p>{{ image.url }}</p>
+    <p>{{ image.name }}</p>
+    <img [src]="image.url" [title]="image.name" />
+  `,
   styles: [],
 })
 export class AppComponent {
-  title = 'a14_demos';
+  public image = {
+    url: './assets/Xkcd_philosophy.png',
+    name: 'Xkcd Philosophy',
+  };
 }
