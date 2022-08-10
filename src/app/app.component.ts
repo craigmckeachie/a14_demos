@@ -1,10 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidationErrors,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
+
+export class CustomValidators {
+  static forbiddenPhrase(control: AbstractControl): ValidationErrors | null {
+    if (control.value) {
+      if (control.value.toLowerCase() === 'password') {
+        return { forbiddenPhrase: true };
+      }
+    }
+    return null;
+  }
+
+  static forbiddenPhraseValidatorFn(phrase: string): ValidatorFn {
+
+    return function forbiddenPhrase(
+      control: AbstractControl
+    ): ValidationErrors | null {
+      if (control.value) {
+        if (control.value.toLowerCase() === phrase) {
+          return { forbiddenPhrase: true };
+        }
+      }
+      return null;
+    };
+
+
+  }
+}
 
 @Component({
   selector: 'app-root',
@@ -41,8 +71,8 @@ import {
       />
       <button>Sign In</button>
     </form>
-    <pre *ngIf="signinForm.get('username').errors">
-      {{ signinForm.get('username').errors | json }}
+    <pre *ngIf="signinForm.get('password').errors">
+      {{ signinForm.get('password').errors | json }}
     </pre
     >
   `,
@@ -56,7 +86,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.signinForm = this.fb.group({
       username: [null, [Validators.required, Validators.minLength(3)]],
-      password: [],
+      password: [null, CustomValidators.forbiddenPhraseValidatorFn('abc123')],
     });
     // this.signinForm = new FormGroup(
     //   {
