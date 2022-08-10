@@ -43,8 +43,6 @@ import {
     </form>
     <pre *ngIf="signinForm.get('username').errors">
       {{ signinForm.get('username').errors | json }}
-
-
     </pre
     >
   `,
