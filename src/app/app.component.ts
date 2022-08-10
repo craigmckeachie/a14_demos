@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
     <nav>
       <a routerLinkActive="highlight" [routerLink]="['/home']">Home</a> |
       <a routerLinkActive="highlight" [routerLink]="['/about']">About</a> |
-      <a routerLinkActive="highlight" [routerLink]="['/contact']">Contact</a>
+      <a routerLinkActive="highlight" [routerLink]="['/contact']">Contact</a> |
+      <a routerLinkActive="highlight" [routerLink]="['/movies']">Movies</a>
     </nav>
     <router-outlet></router-outlet>
   `,
