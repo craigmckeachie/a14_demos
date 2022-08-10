@@ -2,9 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: ` <h3>Start</h3> `,
+  template: `
+    <nav>
+      <a routerLinkActive="highlight" [routerLink]="['/home']">Home</a> |
+      <a routerLinkActive="highlight" [routerLink]="['/about']">About</a> |
+      <a routerLinkActive="highlight" [routerLink]="['/contact']">Contact</a>
+    </nav>
+    <router-outlet></router-outlet>
+  `,
   styles: [],
 })
-export class AppComponent {
-  title = 'a14_demos';
-}
+export class AppComponent {}
