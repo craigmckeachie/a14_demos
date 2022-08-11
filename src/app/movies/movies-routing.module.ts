@@ -4,13 +4,15 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 
 const routes: Routes = [
-  { path: 'movies', component: MovieListComponent },
-  { path: 'movies/detail/:id', component: MovieDetailComponent },
-
+  {
+    path: '',
+    component: MovieListComponent,
+    children: [{ path: 'detail/:id', component: MovieDetailComponent }],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MoviesRoutingModule { }
+export class MoviesRoutingModule {}

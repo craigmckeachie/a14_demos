@@ -9,18 +9,9 @@ import { ContactComponent } from './contact/contact.component';
 import { MoviesModule } from './movies/movies.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent,
-    ContactComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MoviesModule
-  ],
+  declarations: [AppComponent, HomeComponent, AboutComponent, ContactComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

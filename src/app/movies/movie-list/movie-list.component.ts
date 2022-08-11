@@ -19,6 +19,9 @@ import { MovieService } from '../shared/movie.service';
         </li>
       </ul>
     </div>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
   `,
   styles: [],
 })
