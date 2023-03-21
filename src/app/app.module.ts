@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EmailSubscribeComponent } from './email-subscribe/email-subscribe.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmailSubscribeComponent
   ],
   imports: [
     BrowserModule,
